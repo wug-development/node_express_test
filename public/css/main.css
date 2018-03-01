@@ -295,8 +295,7 @@ header{
     border-radius: 4px;
     margin-top: 20px; 
     display: inline-block;  
-    width: 100%; 
-    display: none;   
+    width: 100%;
 }
 .user_welcome{
     width: 220px;

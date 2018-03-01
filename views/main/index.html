@@ -64,12 +64,12 @@
         </a>
     </div>
     <aside class="user_list">
-        {% if userinfo._id %}
+        {% if userInfo._id %}
         <div class="user_logined" id="div_logining">
-            {% if userinfo.isAdmin %}
-            <p class="user_welcome">欢迎，<i>{{userinfo.username}}</i><a href="/admin">进入后台</a></p>
+            {% if userInfo.isAdmin %}
+            <p class="user_welcome">欢迎您，<i>{{userInfo._uname}} 管理员</i><a href="/admin">进入后台</a></p>
             {% else %}
-            <p class="user_welcome">欢迎，<i>{{userinfo.username}}</i></p>
+            <p class="user_welcome">欢迎您，<i>{{userInfo._uname}}</i></p>
             {% endif %}
             <span id="loginOut" class="user_loginOut">退出</span>
         </div>

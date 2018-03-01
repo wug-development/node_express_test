@@ -7,7 +7,12 @@ const mongoose = require('mongoose');
 //表结构
 module.exports = new mongoose.Schema({
     username: String,
-    password: String
+    password: String,
+    //是否管理员
+    isAdmin:{
+        type: Boolean,
+        default: false
+    }
 });
 
 

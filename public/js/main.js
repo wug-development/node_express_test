@@ -58,9 +58,7 @@ $(function(){
                         $('.user_login').css('display','inline-block');
                         $('.user_register').hide();
                     },3000);*/
-                    $('#div_logining').show();
-                    $('.user_form').hide();
-                    $('#div_logining i').html(res.data._uname);
+                    window.location.href = window.location.href;
 
                 }else{
                     $login.find('.user_err span').text(res.message).show();
@@ -111,6 +109,22 @@ $(function(){
                         $('.user_login').css('display','inline-block');
                         $('.user_register').hide();
                     },3000);
+                }else{
+                    $register.find('.user_err span').text(res.message).show();
+                }
+            }
+        });
+    });
+
+    //退出登录
+    $('#loginOut').on('click',function(){
+        $.ajax({
+            type:'get',
+            url:'/api/user/loginOut',
+            dataType:'json',
+            success:function(res){
+                if(res.code == 1){
+                    window.location.href = window.location.href;
                 }else{
                     $register.find('.user_err span').text(res.message).show();
                 }

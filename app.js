@@ -15,10 +15,15 @@ const mongoose = require('mongoose');
 //加载bodyParser
 const bodyParser = require('body-parser');
 //加载cookie
-var Cookies = require('cookies');
+const cookie = require('cookie');
+const cookieParser = require('cookie-parser');
+const cParse = require('./lib/parse');
 
 //创建APP应用
 const app = express();
+
+const user = require('./models/user');
+
 //设置静态文件托管
 app.use('/public',express.static(__dirname + '/public'));
 
@@ -31,31 +36,27 @@ app.set('views','./views');
 app.set('view engine','html');
 //bodyParser设置
 app.use(bodyParser.urlencoded({ extended:true }));
+
+app.use(cookieParser('wuguang'));
+
 //设置cookie
 app.use((req, res, next)=>{
-    req.cookies = new Cookies(req, res);
-req.userinfo = {};
-console.log('1111');
-console.log(req.cookies.get('userinfo'));
-if( req.cookies.get('userinfo') ){
-    console.log('2222');
-    try {
-        console.log('3333');
-        req.userinfo = JSON.parse( req.cookies.get('userinfo') );
-        console.log('4444');
-        console.log(req.cookies.get('userinfo'));
-        User.findById(req.userInfo._id).then((userinfo)=>{
-            req.userinfo.isAdmin = Boolean( userinfo.isAdmin );
-        next();
-    });
-    } catch (error) {
+    req.userinfo = {};
+    var _cookieContent = req.cookies.userinfo;
+    if(_cookieContent){
+        try {
+            req.userInfo = JSON.parse(_cookieContent);
+            user.findById(req.userInfo._id).then((userInfo)=>{
+                req.userInfo.isAdmin = Boolean( userInfo.isAdmin );
+                next();
+            });
+        } catch (error) {
+            next();
+        }
+    }else{
         next();
     }
-}else{
-    next();
-}
 });
-
 
 /*app.get('/',function(req,res,next){
     /!*
@@ -78,7 +79,6 @@ mongoose.connect('mongodb://localhost:27017/blog',function(err){
     if(err){
         console.log('000');
     }else{
-        console.log('111');
         app.listen('8888');
     }
 });

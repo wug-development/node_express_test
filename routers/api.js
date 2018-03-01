@@ -16,8 +16,6 @@ router.use(function(req,res,next){
 });
 
 router.post('/user/register',function(req,res,next){
-    //res.send('api - user');
-    console.log(req.body);
 
     var uname = req.body.username;
     var upass = req.body.password;
@@ -58,14 +56,21 @@ router.post('/user/register',function(req,res,next){
             console.log(newUserinfo);
             responseData.code=1;
             responseData.message = '注册成功！~';
+            res.cookie('userinfo',JSON.stringify({
+                _id : newUserinfo._id,
+                _uname : newUserinfo.username
+            }),{
+                //domain:'.wuguang.club',
+                //secure: true,   //只能使用https
+                //expires: new Date(Date.now() + 900000), //过期时间   如果为0  浏览器关闭即被删除
+                maxAge:900000 //过期时间  从现在开始
+            });
             res.json(responseData);
         });
     }
 });
 
 router.post('/user/login',function(req,res,next){
-    //res.send('api - user');
-    console.log(req.body);
 
     var uname = req.body.username;
     var upass = req.body.password;
@@ -92,8 +97,17 @@ router.post('/user/login',function(req,res,next){
                     _id : userInfo._id,
                     _uname : userInfo.username
                 };
-                res.cookie('userinfo',JSON.stringify(responseData.data));
+                res.cookie('userinfo',JSON.stringify({
+                    _id : userInfo._id,
+                    _uname : userInfo.username
+                }),{
+                    //domain:'.wuguang.club',
+                    //secure: true,   //只能使用https
+                    //expires: new Date(Date.now() + 900000), //过期时间   如果为0  浏览器关闭即被删除
+                    maxAge:900000 //过期时间  从现在开始
+                });
                 res.json(responseData);
+
                 return;
             }else{
                 responseData.code=0;
@@ -103,6 +117,14 @@ router.post('/user/login',function(req,res,next){
             }
         })
     }
+});
+
+router.get('/user/loginOut',function(req,res,next){
+    res.clearCookie('userinfo');
+    responseData.code=1;
+    responseData.message = '退出成功！~';
+    res.json(responseData);
+    return;
 });
 
 module.exports = router;
