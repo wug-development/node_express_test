@@ -5,6 +5,7 @@
 const express = require('express');
 const router = express.Router();
 const user = require('../models/user.js');
+const content = require('../models/content');
 
 var responseData;
 router.use(function(req,res,next){
@@ -125,6 +126,29 @@ router.get('/user/loginOut',function(req,res,next){
     responseData.message = '退出成功！~';
     res.json(responseData);
     return;
+});
+
+router.post('/comment/post',function (req,res,next) {
+    var _cid = req.body.cid || '';
+    //内容ID
+    var postData = {
+        username:req.userInfo._uname,
+        postTime:new Date(),
+        content:req.body.content
+    };
+
+    content.findOne({
+        _id:_cid
+    }).then(function (content) {
+        content.comments.push(postData);
+        return content.save();
+    }).then(function (newcontent) {
+        responseData.code=1;
+        responseData.message = '评论成功！~';
+        responseData.data = newcontent;
+        res.json(responseData);
+        return;
+    })
 });
 
 module.exports = router;

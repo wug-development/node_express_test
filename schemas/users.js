@@ -6,8 +6,8 @@ const mongoose = require('mongoose');
 
 //表结构
 module.exports = new mongoose.Schema({
-    username: String,
-    password: String,
+    username: String,//用户名
+    password: String,//密码
     //是否管理员
     isAdmin:{
         type: Boolean,

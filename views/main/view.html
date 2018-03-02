@@ -1,0 +1,23 @@
+{%extends 'layout.html'%}
+
+{%block content%}
+<div>
+    <div>{{content.title}}</div>
+    <div>作者：{{userInfo._uname}}   阅读数：{{content.views}}</div>
+    <div>{{content.content}}</div>
+
+    <div>
+        <h3>评论</h3>
+        <div>
+            <textarea id="txt_content" rows="5"></textarea>
+            <input type="submit" id="btn_submit" data-id="{{content._id.toString()}}" value="提交" />
+        </div>
+        <div id="div_comment">
+
+        </div>
+    </div>
+
+</div>
+<script src="/public/js/comment.js"></script>
+{%endblock%}
+
