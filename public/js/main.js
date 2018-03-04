@@ -105,10 +105,7 @@ $(function(){
             success:function(res){
                 if(res.code == 1){
                     $register.find('.user_err span').text(res.message).show();
-                    setTimeout(function(){
-                        $('.user_login').css('display','inline-block');
-                        $('.user_register').hide();
-                    },3000);
+                    window.location.href = window.location.href;
                 }else{
                     $register.find('.user_err span').text(res.message).show();
                 }
@@ -131,18 +128,4 @@ $(function(){
             }
         });
     });
-
-    // 打字效果
-    var str = 'hello world';
-    var i = 0;
-    function typing(){
-        var divTyping = $('.banner h2');
-        if (i <= str.length) {
-            divTyping.text( str.slice(0, i++) + '_' );
-            setTimeout(function(){typing()}, 200);
-        }else{
-            divTyping.text( str );
-        }
-    }
-    typing();
 });

@@ -12,6 +12,15 @@ router.use(function (req,res,next) {
     if(req.userInfo && !req.userInfo.isAdmin){
         res.send('对不起，只有管理员才可以进入后台！~');
         return;
+    }else if(!req.userInfo){
+        res.render('admin/error',{
+            userInfo:req.userInfo,
+            message:'请登录！~',
+            url:'/'
+        });
+        return;
+    }else{
+        next();
     }
     next();
 });

@@ -7,54 +7,37 @@
 header{
     width: 100%;
     min-width: 960px;
-    height: 30px;
-    line-height: 30px;
-    padding-top: 12px;
-    padding-bottom: 12px;
-    color: rgba(255,255,255,0.75);
-    background-color: #24292e;
 }
-.head_logo{
+header>div img{
     display: block;
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
-    background: rgba(255,255,255,0.95);
-    position: relative;
-    float: left;
-}
-.head_logo:hover{
-    background: rgba(255,255,255,1);
-}
-.head_logo img{
-    position: absolute;
-    top: 2px;
-    left: 2px;
-    width: 28px;
-    height: 28px;
+    width: 100%;
 }
 .head_nav{
-    float: right;
+    display: block;
+    text-align: center;
+    height: 40px;
+    border-bottom: 1px solid #ccc;
+    box-shadow: 0 0 1px;
 }
 .head_nav a{
     display: inline-block;
-    height: 32px;
-    line-height: 32px;
-    float: left;
-    margin-left: 24px;
-    color: rgba(255,255,255,0.75);
+    height: 40px;
+    line-height: 40px;
+    color: #666;
+    width: 100px;
 }
-.head_nav a:hover{
-    color: rgba(255,255,255,1);
+.head_nav a:hover,.head_nav a.cur{
+    border-bottom: 2px solid rgba(231,165,36,1);
 }
 .article_list{
     width: 690px;
     float: left;
     display: inline-block;
-    -webkit-box-shadow: 0 1px 3px 0 rgba(32, 62, 100, 0.1);
-    box-shadow: 0 1px 3px 0 rgba(32, 62, 100, 0.1);
+    -webkit-box-shadow: 0 1px 3px 0 rgba(32, 62, 100, 0.3);
+    box-shadow: 0 1px 3px 0 rgba(32, 62, 100, 0.3);
     margin: 30px 0;
     padding: 30px 0;
+    overflow: hidden;
 }
 .article_item{
     display: inline-block;
@@ -157,8 +140,8 @@ header{
 }
 .user_form{
     background: #ffffff;
-    -webkit-box-shadow: 0 1px 3px 0 rgba(32, 62, 100, 0.1);
-    box-shadow: 0 1px 3px 0 rgba(32, 62, 100, 0.1);
+    -webkit-box-shadow: 0 1px 3px 0 rgba(32, 62, 100, 0.3);
+    box-shadow: 0 1px 3px 0 rgba(32, 62, 100, 0.3);
     border-radius: 4px;
 }
 .user_tab{
@@ -252,8 +235,8 @@ header{
 }
 .friendly_link{
     background: #ffffff;
-    -webkit-box-shadow: 0 1px 3px 0 rgba(32, 62, 100, 0.1);
-    box-shadow: 0 1px 3px 0 rgba(32, 62, 100, 0.1);
+    -webkit-box-shadow: 0 1px 3px 0 rgba(32, 62, 100, 0.3);
+    box-shadow: 0 1px 3px 0 rgba(32, 62, 100, 0.3);
     border-radius: 4px;
     margin-top: 20px; 
     display: inline-block;  
@@ -290,8 +273,8 @@ header{
 }
 .user_logined{
     background: #ffffff;
-    -webkit-box-shadow: 0 1px 3px 0 rgba(32, 62, 100, 0.1);
-    box-shadow: 0 1px 3px 0 rgba(32, 62, 100, 0.1);
+    -webkit-box-shadow: 0 1px 3px 0 rgba(32, 62, 100, 0.3);
+    box-shadow: 0 1px 3px 0 rgba(32, 62, 100, 0.3);
     border-radius: 4px;
     margin-top: 20px; 
     display: inline-block;  
@@ -306,6 +289,13 @@ header{
 .user_welcome i{
     color: #0366d6;
     font-weight: 600;
+}
+.user_welcome a{
+    display: block;
+    padding-top: 15px;
+}
+.user_welcome a:hover{
+    text-decoration: underline !important;
 }
 .user_loginOut{
     display: inline-block;
@@ -430,3 +420,90 @@ header{
 .discuss_input:focus{
     border: 1px solid rgba(15,136,235,0.75);
 }
+
+/******* index *************************************************/
+.wg_page{
+    text-align: center;
+    margin-top: 30px;
+}
+
+/****** view *************************************************/
+.content_title{
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+}
+.content_label{
+    text-align: center;
+    padding: 10px 0;
+}
+
+.wg_comment{
+    padding: 15px;
+}
+.wg_comment h3{
+    font-size: 18px;
+}
+.div_pinglun{
+    width: 100%;
+    height: 82px;
+    margin-top: 10px;
+}
+.div_pinglun textarea{
+    width: 550px;
+    height: 80px;
+    float: left;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-right: 0;
+    padding: 5px;
+}
+.div_pinglun input[type=button]{
+    width: 100px;
+    height: 80px;
+    float: left;
+    border: 1px solid #73D661;
+    box-sizing: border-box;
+    font-size: 20px;
+    color: #fff;
+    border-left: 0;
+    background-color: #73D661;
+    cursor: pointer;
+}
+.div_pinglun input[type=button]:hover{
+    background-color: #35b558;
+}
+#div_comment{
+    margin-top: 40px;
+    font-size: 14px;
+}
+#div_comment>div{
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 40px;
+    height: 40px;
+}
+#div_comment ul li{
+    padding-bottom: 15px;
+    border-bottom: 1px solid #efefef;
+}
+#div_comment ul li div{
+    text-align: right;
+    color: #999;
+    line-height: 40px;
+}
+#div_comment ul li div span{
+    float: left;
+    font-weight: bold;
+    color: #666;
+}
+
+
+
+
+
+
+
+
+
+

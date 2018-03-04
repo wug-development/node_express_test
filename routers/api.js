@@ -9,10 +9,10 @@ const content = require('../models/content');
 
 var responseData;
 router.use(function(req,res,next){
-   responseData = {
+    responseData = {
        code : 0,
        message : ''
-   };
+    };
     next();
 });
 

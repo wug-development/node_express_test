@@ -4,29 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="public/css/util.css">
-    <link rel="stylesheet" href="public/css/main.css">
+    <link rel="stylesheet" href="/public/css/util.css"/>
+    <link rel="stylesheet" href="/public/css/main.css"/>
+    <link rel="stylesheet" href="/public/css/lib/layui.css"  media="all">
     <title>博客首页</title>
-    <script src="public/js/jquery-1.8.3.min.js"></script>
+    <script src="/public/js/lib/jquery-1.8.3.min.js"></script>
 </head>
 <body>
 <header>
-    <div class="center">
-        <a class="head_logo" href="javascript:void(0);">
-            <img src="public/image/logo.png" alt="" />
+    <div>
+        <a href="javascript:void(0);">
+            <img src="/public/image/banner.png" alt="" />
         </a>
-        <nav class="head_nav">
-            <a href="/">首页</a>
-            {% for category in categorys %}
-            <a href="/?cateid={{category._id.toString()}}">{{category.name}}</a>
-            {% endfor %}
-        </nav>
     </div>
+    <nav class="head_nav">
+        <a class="cur" href="/">首页</a>
+        {% for category in categorys %}
+        <a href="/?cateid={{category._id.toString()}}">{{category.name}}</a>
+        {% endfor %}
+    </nav>
 </header>
-<div class="center banner">
-    <img src="public/image/banner.jpg" alt="">
-    <h2></h2>
-</div>
 <div class="center">
     <div class="article_list">
         {% block content %}{%endblock%}
@@ -35,7 +32,7 @@
         {% if userInfo._id %}
         <div class="user_logined" id="div_logining">
             {% if userInfo.isAdmin %}
-            <p class="user_welcome">欢迎您，<i>{{userInfo._uname}} 管理员</i><a href="/admin">进入后台</a></p>
+            <p class="user_welcome">欢迎您，<i>{{userInfo._uname}} 管理员</i><a href="/admin">进入后台 >></a></p>
             {% else %}
             <p class="user_welcome">欢迎您，<i>{{userInfo._uname}}</i></p>
             {% endif %}
@@ -51,11 +48,11 @@
             <div id="login" class="user_login">
                 <div class="user_input">
                     <i class="iconfont">&#xe60d;</i>
-                    <input type="text" id="txt_uname" placeholder="请输入用户名">
+                    <input type="text" id="txt_uname" maxlength="20" placeholder="请输入用户名">
                 </div>
                 <div class="user_input margin_bottom0">
                     <i class="iconfont">&#xe6c6;</i>
-                    <input type="password" id="txt_upass" placeholder="请输入密码">
+                    <input type="password" id="txt_upass" maxlength="20" placeholder="请输入密码">
                 </div>
                 <p class="user_err"><span>用户名不能为空</span></p>
                 <p class="user_login_btn">登 录</p>
@@ -85,7 +82,8 @@
                 <span class="discuss_title">友情链接</span>
             </div>
             <div class="link_item">
-                <a href="http:www.zhihu.com">知乎</a>
+                <a href="http://www.zhihu.com" target="_blank">知乎</a>
+                <a href="http://www.github.com" target="_blank">GitHub</a>
             </div>
         </div>
 
@@ -93,6 +91,6 @@
         <p class="copy_right">京ICP备17059284号-1</p>
     </aside>
 </div>
-<script src="public/js/main.js"></script>
+<script src="/public/js/main.js"></script>
 </body>
 </html>

@@ -1,19 +1,45 @@
 {%extends 'layout.html'%}
 
 {%block content%}
-<div>
-    <div>{{content.title}}</div>
-    <div>作者：{{userInfo._uname}}   阅读数：{{content.views}}</div>
-    <div>{{content.content}}</div>
+<div class="wg_content">
+    <div class="content_title">{{content.title}}</div>
+    <div class="content_label">作者：{{userInfo._uname}}   阅读数：{{content.views}}</div>
+    <div id="div_content"></div>
+    <script>
+        function escape2Html(str) {
+            var arrEntities={'lt':'<','gt':'>','nbsp':' ','amp':'&','quot':'"'};
+            return str.replace(/&(lt|gt|nbsp|amp|quot);/ig,function(all,t){return arrEntities[t];});
+        }
 
-    <div>
-        <h3>评论</h3>
-        <div>
-            <textarea id="txt_content" rows="5"></textarea>
-            <input type="submit" id="btn_submit" data-id="{{content._id.toString()}}" value="提交" />
+        (function () {
+            $('#div_content').html(escape2Html('{{content.content}}'));
+        }())
+    </script>
+
+    <div class="wg_comment">
+        <h3>评论：</h3>
+        <div class="div_pinglun">
+            <textarea id="txt_content" rows="5" placeholder="请登录后评论！~"></textarea>
+            <input type="button" id="btn_submit" data-id="{{content._id.toString()}}" value="提交" />
         </div>
         <div id="div_comment">
-
+            <div>共2个评论</div>
+            <ul>
+                <li>
+                    <div><span>武广</span>发布于：2018-03-04</div>
+                    <p>
+                        评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论内
+                        容评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论内容
+                    </p>
+                </li>
+                <li>
+                    <div><span>武广</span>发布于：2018-03-04</div>
+                    <p>
+                        评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论内
+                        容评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论内容
+                    </p>
+                </li>
+            </ul>
         </div>
     </div>
 
